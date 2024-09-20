@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function ToDoList() {
+export default function CounterWithState() {
   
   let [counter, setCounter] =useState(0);
 
@@ -19,7 +19,6 @@ export default function ToDoList() {
     <>
     <h1>Counter</h1>
     <p>{counter}</p>
-
     <button onClick={handleChange} name="increase">Increase</button>
     <button onClick={handleChange} name="decrease">Decrease</button>
     </>
