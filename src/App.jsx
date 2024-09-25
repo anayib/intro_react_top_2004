@@ -1,4 +1,5 @@
-import { createBrowserRouter , RouterProvider, Route, Link, Outlet } from "react-router-dom";
+import { createBrowserRouter , RouterProvider } from "react-router-dom";
+import { Home } from "./components/Home";
 import { Posts } from "./components/Posts";
 import { Post } from "./components/Post";
 import { ErrorPage } from "./components/ErrorPage";
@@ -11,6 +12,11 @@ Also serves to separate fetching/rendering concerns
 
 //routes configuration
 const router =  createBrowserRouter([
+  {
+    path: "/",
+    element: <Home/>,
+    errorElement: <ErrorPage />
+  },
   {
     path: "/posts",
     element: <Posts/>,
