@@ -1,36 +1,33 @@
-import { BrowserRouter as Router, Routes, Route, Link, Outlet } from "react-router-dom";
+import { createBrowserRouter , RouterProvider, Route, Link, Outlet } from "react-router-dom";
+import { Posts } from "./components/Posts";
+import { Post } from "./components/Post";
+import { ErrorPage } from "./components/ErrorPage";
+import {postLoader} from "./loaders/postLoader";
+import { postsLoader } from './loaders/postsLoader'; 
+/* 
+The loader ensure that the data is ready before rendering the component. 
+Also serves to separate fetching/rendering concerns
+*/
 
+//routes configuration
+const router =  createBrowserRouter([
+  {
+    path: "/posts",
+    element: <Posts/>,
+    loader: postsLoader,
+    errorElement: <ErrorPage />,
 
-function MainLayout() {
-  return(
-    <>
-    <nav>
-      <Link to="/Products">Product</Link>
-      <Link to="/about">About</Link>
-    </nav>
-    <div>
-      <Outlet />
-    </div>
-    </>
-  )
-}
+  },
+  {
+    path: "/posts/:id", 
+    element: <Post />,
+    loader: postLoader, 
+    errorElement: <ErrorPage />,
+  }
+]);
 
-function Products() {
-  return <h1>Products Page</h1>
-};
-
-function About() {
-  return <h1>About</h1>
-};
-
-export default function App(){
-  return(
-    <Router>
-    <Routes>
-      <Route path="/" element={<MainLayout/>}/>
-        <Route path="/products" element={<Products/>}/>
-        <Route path="/about" element={<About/>}/>
-    </Routes>
-  </Router>
-  )
+export default function App() {
+  return (
+    <RouterProvider router={router}/>
+  );
 }
