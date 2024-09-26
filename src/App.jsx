@@ -3,10 +3,12 @@ import { Home } from "./components/Home";
 import { Posts } from "./components/Posts";
 import { Post } from "./components/Post";
 import { PostEdit } from "./components/PostEdit";
+import { PostCreate } from "./components/PostCreate";
 import { ErrorPage } from "./components/ErrorPage";
 import {postLoader} from "./loaders/postLoader";
 import { postsLoader } from './loaders/postsLoader'; 
 import { deletePost } from "./actions/deletePost";
+import { createPost } from "./actions/createPost";
 import { editPost } from "./actions/editPost";
 /* 
 The loader ensure that the data is ready before rendering the component. 
@@ -40,6 +42,12 @@ const router =  createBrowserRouter([
     loader: postLoader, 
     action: editPost,
     errorElement: <ErrorPage />,
+  },
+  {
+    path: "posts/new",
+    element: <PostCreate />,
+    action: createPost,
+    errorElement: <ErrorPage/>
   }
 ]);
 

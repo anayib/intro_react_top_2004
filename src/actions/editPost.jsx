@@ -15,7 +15,7 @@ export async function editPost (postId, updatedPost) {
         throw new Error(`HTTP: error! status ${formData.status}`)
       }
 
-      return formData.json();
+      return await formData.json();
     } catch (error) {
       console.error(error);
     }
