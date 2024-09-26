@@ -3,20 +3,7 @@ import { deletePost } from "../actions/deletePost";
 
 export function Post() {
     const post = useLoaderData();
-
-    const  handleDelete = async (e) => {
-      e.preventDefault();
-      const isDeleted = await deletePost(post.id);
-
-      if(isDeleted) {
-        console.log('IM IN')
     
-      } else {
-        throw new Error("Failed to delete the post try again");
-      }
-      
-    }
-
     return(
         <div>
             <h1>{post.title}</h1>
