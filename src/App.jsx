@@ -10,7 +10,8 @@ import { postsLoader } from './loaders/postsLoader';
 import { deletePost } from "./actions/deletePost";
 import { createPost } from "./actions/createPost";
 import { editPost } from "./actions/editPost";
-import { User, ContextProvider } from "./components/userContextExample";
+import { User } from "./components/User";
+import { UserContextProvider } from "./context/UserContext"; 
 
 /* 
 The loader ensure that the data is ready before rendering the component. 
@@ -53,7 +54,11 @@ const router =  createBrowserRouter([
   },
   {
     path: "/users",
-    element: (<ContextProvider><User/></ContextProvider>),
+    element: (
+      <UserContextProvider>
+        <User/>
+      </UserContextProvider>
+    ),
     errorElement: <ErrorPage/>
   }
 ]);
